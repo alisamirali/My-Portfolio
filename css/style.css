@@ -48,10 +48,47 @@ section {
     display: block;
     opacity: 1;
     padding: 0 30px;
+    position: fixed;
+    left: 270px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
 }
 
-.main-content {
-    padding-left: 270px;
+section.back-section {
+    z-index: 1;
+}
+
+section.active {
+    z-index: 2;
+    opacity: 1;
+    animation: slide 1s ease;
+    -webkit-animation: slide 1s ease;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        -moz-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        -o-transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+    }
 }
 
 .hidden {
@@ -162,6 +199,11 @@ aside {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
 }
 
 aside .logo {
@@ -185,6 +227,10 @@ aside .logo a span {
     font-size: 40px;
 }
 
+aside .nav-toggler.open span {
+    background-color: transparent;
+}
+
 aside .logo a::before {
     content: "";
     position: absolute;
@@ -196,6 +242,15 @@ aside .logo a::before {
     left: 0;
 }
 
+aside .nav-toggler.open span::before {
+    top: 0;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+
 aside .logo a::after {
     content: "";
     position: absolute;
@@ -205,6 +260,15 @@ aside .logo a::after {
     border-right: 5px solid var(--skin-color);
     top: 0;
     right: 0;
+}
+
+aside .nav-toggler.open span::after {
+    top: 0;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
 }
 
 aside .nav-toggler {
@@ -224,6 +288,11 @@ aside .nav-toggler {
     display: none;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
 }
 
 aside .nav-toggler span {
@@ -292,7 +361,7 @@ aside .nav-list li a i {
 
 aside .social {
     position: absolute;
-    bottom: 40px;
+    bottom: 60px;
 }
 
 aside .social i {
@@ -453,7 +522,6 @@ h3.my-profession {
 }
 
 .about .about-content .personal-info .buttons .btn {
-    margin-right: 15px;
     margin-top: 10px;
 }
 
@@ -831,11 +899,27 @@ h3.my-profession {
 /* Media Queries */
 
 @media (max-width: 1199px) {
+    section .container {
+        padding-top: 70px;
+    }
     aside {
         left: -270px;
     }
-    .main-content {
-        padding-left: 0;
+    aside.open {
+        left: 0;
+    }
+    aside .nav-toggler {
+        display: flex;
+        left: 30px;
+    }
+    aside .nav-toggler.open {
+        left: 300px;
+    }
+    section {
+        left: 0;
+    }
+    section.open {
+        left: 270px;
     }
     .about .about-content .personal-info .info-item p span {
         display: block;
@@ -871,13 +955,14 @@ h3.my-profession {
         max-width: 100%;
     }
     h3.hello {
-        font-size: 22px;
-    }
-    .home .my-profession {
+        margin-top: 30px;
         font-size: 20px;
     }
+    .home .my-profession {
+        font-size: 22px;
+    }
     .home-info p {
-        font-size: 17px;
+        font-size: 16px;
     }
     h3.contact-title {
         font-size: 22px;

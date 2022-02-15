@@ -1,7 +1,7 @@
 .style-switcher {
     position: fixed;
     right: 0;
-    top: 40px;
+    top: 65px;
     padding: 15px;
     width: 200px;
     border: 1px solid var(--bg-black-50);
@@ -54,6 +54,11 @@
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
+}
+
+.style-switcher .s-icon:hover {
+    background-color: var(--skin-color);
+    color: #fff;
 }
 
 .style-switcher .s-icon i {
